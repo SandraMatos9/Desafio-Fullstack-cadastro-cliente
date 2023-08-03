@@ -73,6 +73,7 @@ export const Container = styled.div`
                         height: 50px;
                         border-radius: 15px;
                         border: none;
+                        padding-left: 5px;
                     }
 
 

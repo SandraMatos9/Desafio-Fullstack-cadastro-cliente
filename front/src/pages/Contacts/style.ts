@@ -16,12 +16,23 @@ export const Container = styled.div `
 
         }
     }
+    
+    h1{
+            font-size: 70px;
+            margin: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
 
     main{
         display: flex;
         gap:20px;
         align-items: center;
         justify-content:center;
+
 
 
         ul{
@@ -32,11 +43,16 @@ export const Container = styled.div `
             h1{
                 text-align: center;
             }
-            li{
+            display: flex;
+            flex-direction: column;
+            .liMap{
                 list-style: none;
-                img{
-                margin:15px;
-            }
+                display: flex;
+                flex-direction: column;
+                background-color: aliceblue;
+                margin: auto;
+                
+            
 
             }
          

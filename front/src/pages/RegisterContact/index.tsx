@@ -4,8 +4,21 @@ import { useAuth } from "../../hooks/useAuth"
 import { Container } from "./style"
 import { schemaRegistering } from "./validator"
 import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { api } from "../../services/api"
 
+export interface Contact {
+    id: string,
+    name: string,
+    telephone: number,
+    email?:string,
+    registrationDate: Date
+}
 export const RegisterContact =() =>{
+    // const {loading} = useAuth()
+
+
+
     const {register,handleSubmit} = useForm({
         resolver: zodResolver(schemaRegistering)
 
@@ -13,6 +26,14 @@ export const RegisterContact =() =>{
     const { signIn } = useAuth()
     return (
     <Container>
+
+        <ul>
+            {
+                contacts.map((contact)=> <li key={contact.id}>{contact.name}
+
+                </li>)
+            }
+        </ul>
         
        <main>
             <h2 className='title'>ADICIONANDO CONTATO</h2>

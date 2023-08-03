@@ -29,15 +29,15 @@ export interface iRequestErrorResponse {
 
 export interface iUser {
     email: string;
-    password: string;
     name: string;
     telephone:number;
+    registrationDate: Date;
   }
   export interface iContact {
     email: string;
     name: string;
     telephone:number;
-    date: Date;
+    registrationDate: Date;
   }
 
   export interface iUserLogin {
@@ -93,6 +93,7 @@ export const UserProvider = ({ children }: iUserProvider) => {
   const [user, setUser] = useState<iUser | null>(null);
   const [token, setToken] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  
 
 
   const navigate = useNavigate();
@@ -138,7 +139,7 @@ export const UserProvider = ({ children }: iUserProvider) => {
       localStorage.setItem("@ID", response.data.user.id);
       setUser(response.data.user);
       toast.success("Login feito com sucesso!");
-      navigate("/dashboard");
+      navigate("/client");
     } catch (error) {
       toast.error("Erro no login!");
     } finally {

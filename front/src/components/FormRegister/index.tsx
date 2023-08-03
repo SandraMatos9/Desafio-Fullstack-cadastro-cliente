@@ -23,7 +23,7 @@ const registerUserSchema = z.object({
 
 type TRegisterUser = z.infer<typeof registerUserSchema>
 
-export const RegisterForm = () => {
+export const RegisterForm = ({setUsers}: IRegister) => {
     const { register, handleSubmit, formState: { errors }} = useForm<IRegisterClient>({
         resolver: zodResolver(registerUserSchema)
     });
@@ -31,7 +31,7 @@ export const RegisterForm = () => {
     const { userRegister } = useContext(UserContext);
 
     const submit: SubmitHandler<IRegisterClient> = (formData) => {
-        userRegister(formData);
+        userRegister(formData); 
     }
     console.log(errors)
 

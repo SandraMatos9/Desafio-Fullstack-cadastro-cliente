@@ -3,20 +3,21 @@ import { RoutesMain } from "./routes"
 import { ToastContainer } from 'react-toastify';
 
 import GlobalStyle from "./styles/GlobalStyle"
-import { iContact, iUser } from "./providers/UserContext";
-import { useState } from "react";
+import { ContactsProvider } from "./providers/ContactContext";
+
 
 export function App() {
 
-  const [users, setUsers] = useState<iUser[]>([])
-  const [contacts, setContacts] = useState<iContact[]>([])
+
 
   return (
     <>
      <GlobalStyle/>
      <AuthProvider>
+      <ContactsProvider>
      <ToastContainer />
       <RoutesMain/>
+      </ContactsProvider>
 
      </AuthProvider>
     </>
