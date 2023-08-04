@@ -1,7 +1,7 @@
-import { ReactNode, createContext, useState } from "react";
+import {  ReactNode, createContext, useState } from "react";
 import { api } from "../services/api";
 import { Contact } from "../pages/RegisterContact";
-import { iContact } from "./UserContext";
+// import { iContact, iUser } from "./UserContext";
 
 
 
@@ -24,21 +24,27 @@ export const ContactContext = createContext<ContactProviderValues>(
 )
 
 interface ContactProviderValues{
-    usecontact: Array<iContact>
-    loading: boolean
+    // usecontact: Array<iContact>
+    // loading: boolean
     contacts:IContact[]
     setContacts: React.Dispatch<React.SetStateAction<IContact[]>>
-    setUser: React.Dispatch<React.SetStateAction<[]>>
-    setLoading: React.Dispatch<React.SetStateAction<boolean>>
+    // setUser: React.Dispatch<React.SetStateAction<[]>>
+    // setLoading: React.Dispatch<React.SetStateAction<boolean>>
     refresh:() => Promise<void>
+    toggleModal: () => void
     
+        
     // AuthProvider: iUser
 }
 export const ContactsProvider = ({ children }: ContactProviderProps) => {
 
     const [contacts, setContacts] = useState<IContact[]>([] as Contact[]);
+    const [isOpenModal, setIsOpenModal] = useState(false)
+
   
 
+
+    const toggleModal = () => setIsOpenModal(!isOpenModal)
     const refresh= async( )=>{
         try{
             const response= await api.get<Contact[]>("contacts");
@@ -75,7 +81,7 @@ export const ContactsProvider = ({ children }: ContactProviderProps) => {
     // } 
     
     return(
-        <ContactContext.Provider value={{  contacts, setContacts, refresh }}>
+        <ContactContext.Provider value={{  contacts, setContacts, refresh ,toggleModal,}}>
             {children}
         </ContactContext.Provider>
     )

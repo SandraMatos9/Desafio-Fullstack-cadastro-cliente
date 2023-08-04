@@ -43,7 +43,10 @@ export const Client =({users}:IClientProps) =>{
                 user.map((user, id)=>
                 <div className='divMap' key={id}><h1 className="title"> {user.name} </h1>
                 <div className="divOrgDados">
-                <div className="divDados"><img src={email} alt="email" />  {user.email} </div>  <div className="divDados"><img src={telephone} alt="telephone" /> {user.telephone} </div> <div className="divDados"><img src={calendar} alt="calendar" />  <div>{user.registrationDate.toString()}</div></div>
+                <div className="divDados"><img src={email} alt="email" /> 
+                 {user.email} </div>  <div className="divDados"><img src={telephone} alt="telephone" /> 
+                 {user.telephone} </div> <div className="divDados"><img src={calendar} alt="calendar" /> 
+                  <div>{user.registrationDate.toString()}</div></div>
                 </div>
                 </div>)
 
@@ -51,7 +54,6 @@ export const Client =({users}:IClientProps) =>{
                     
                     
                         <Link to ="/contacts"><p><img src={users1} alt="email" /></p></Link>
-                        <Link to="/registerContact"> <button><img src={addContact} alt="email" /></button></Link>
 
                 </div>
          

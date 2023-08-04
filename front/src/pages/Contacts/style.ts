@@ -40,17 +40,30 @@ export const Container = styled.div `
             width: 500px;
             height: 500px;
             margin: auto;
+            flex-flow: row wrap;
+            gap: 50px;
+            
             h1{
                 text-align: center;
             }
             display: flex;
             flex-direction: column;
             .liMap{
+                width: 250px;
                 list-style: none;
                 display: flex;
                 flex-direction: column;
-                background-color: aliceblue;
                 margin: auto;
+                gap:5px;
+                div{
+                    display: flex;
+                    justify-content: center;
+                    gap: 10px;
+                    margin: 5px;
+                }
+                img{
+                    width: 15px;
+                }
                 
             
 
