@@ -18,7 +18,7 @@ const createTokenService = async ({email, password}:TLoginRequest) =>{
     })
 
     if(!user){
-        throw new AppError("Invalid credentials",403)
+        throw new AppError("Invalid user!",404)
 
     }
 
@@ -26,14 +26,14 @@ const createTokenService = async ({email, password}:TLoginRequest) =>{
 
     
     if(!passwordMatch){
-        throw new AppError("Invalid credentials",403)
+        throw new AppError("Invalid user!",404)
 
     }
 
     const token = jwt.sign({
         userName:user.name},
          process.env.SECRET_KEY!,
-         {expiresIn:"1h", subject: user.id}
+         {expiresIn:"24h", subject: user.id}
          )
 
          return token

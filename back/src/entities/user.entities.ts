@@ -19,7 +19,8 @@ class User{
 
     
 
-    @OneToMany(() => Contact, contact => contact.user)
+    @OneToMany(() => Contact, contact => contact.user,{eager:true
+    })
     contacts :Contact[]
 
 

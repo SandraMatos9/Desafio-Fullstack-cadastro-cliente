@@ -1,8 +1,11 @@
 import { NextFunction,Request,Response } from "express";
 import { AppDataSource } from "../data-source";
 import { Contact } from "../entities/contact.entities";
+import app from "../app";
+import { AppError } from "../errors/AppError";
 
 const ensureIsOwnerMiddleware = async(req: Request, res: Response, next: NextFunction) =>{
+    
     const contactsRepository = AppDataSource.getRepository(Contact)
     const contactId = req.params.id
     const userId = res.locals.userId
@@ -18,16 +21,12 @@ const ensureIsOwnerMiddleware = async(req: Request, res: Response, next: NextFun
         }
     })
     if(!contact){
-        res.status(404).json({
-            message:"contact not found"
-        })
+         throw new AppError(" not authorization",403)
     }
-    if(contact?.user.id!= userId){
-        res.status(403).json({
-            message:"You don't have permissions"
-        })
+    if(contact.user.id!= userId){
+        throw new AppError(" not authorization",403)
 
     }
-    return next
+    return  next()
 }
 export {ensureIsOwnerMiddleware}

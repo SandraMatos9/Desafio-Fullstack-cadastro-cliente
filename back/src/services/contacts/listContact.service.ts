@@ -13,24 +13,23 @@ const listContactService = async (userId: string): Promise<any> => {
     const contactRepository = AppDataSource.getRepository(Contact)
     const userRepository = AppDataSource.getRepository(User)
 
-    const user = await userRepository.findOne({
-        where: {
-            id: userId
-        }
-    })
+    const user = await userRepository.findOneBy(
+        
+        {id: userId}
+    )
+        return user
+    // if (!user) {
+    //     throw new AppError("user not found", 404)
+    // }
 
-    if (!user) {
-        throw new AppError("user not found", 404)
-    }
-
-    const contacts = await contactRepository.find({
-        where: {
-            user: user
-        }
-    })
+    // const contacts = await contactRepository.find({
+    //     where: {
+    //         user:  user!.id
+    //     }
+    // })
 
 
-    return contactSchemaResponse.parse(contacts)
+    return contactSchemaResponse.parse('contacts')
 }
 
 export { listContactService }

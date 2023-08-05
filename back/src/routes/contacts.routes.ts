@@ -8,7 +8,7 @@ import { ensureIsOwnerMiddleware } from "../middlewares/ensureIsOwner.middleware
 const contactsRoutes = Router()
 contactsRoutes.post("", ensureAuthMiddleware, ensureDataIsValid(contactSchemaRequest),createContactController)
 contactsRoutes.get("", listContactsController)
-contactsRoutes.get("/:id", ensureAuthMiddleware, listContactController)
+contactsRoutes.get("/user", ensureAuthMiddleware, listContactController)
 contactsRoutes.patch("/:id",ensureAuthMiddleware,ensureIsOwnerMiddleware, ensureDataIsValid(contactSchemaUpdate), updateContactController) 
 contactsRoutes.delete("/:id",ensureAuthMiddleware,ensureIsOwnerMiddleware,deleteContactController) 
 export{contactsRoutes}

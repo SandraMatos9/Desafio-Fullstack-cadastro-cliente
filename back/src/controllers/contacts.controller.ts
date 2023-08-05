@@ -31,7 +31,9 @@ const updateContactController = async (req: Request, res: Response) =>{
 }
 
 const deleteContactController = async (req: Request, res: Response) =>{
+    console.log(req.params.id)
     await deleteContactService(req.params.id)
     return res.status(204).send()
+    
 }
 export{createContactController, listContactController,updateContactController,deleteContactController,listContactsController}
